@@ -1,0 +1,38 @@
+.not-page {
+  &__number {
+    font-size: 14rem;
+    color: rgb(0, 0, 0);
+  }
+
+  &__image {
+    width: 9.375rem;
+  }
+
+  &__text {
+    font-size: 2rem;
+    color: initial;
+  }
+
+  &__link {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    color: rgb(255, 255, 255);
+    background-color: rgb(238, 82, 129);
+    border: 2px solid rgb(146, 51, 80);
+    border-radius: 1.5rem;
+    box-shadow: -2px 4px 0px 0px rgb(146, 51, 80);
+    transform: translate3d(2px, -4px, 0px);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: none;
+      border: 2px solid rgb(238, 82, 129);
+      transform: translate3d(0, 0, 0);
+    }
+
+    &:focus {
+      border: 2px solid rgb(0, 0, 0);
+    }
+  }
+}

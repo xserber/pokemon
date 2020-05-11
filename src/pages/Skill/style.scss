@@ -1,0 +1,58 @@
+.abilities {
+  &__btn {
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem 0 1rem;
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    transition: all 0.3s ease-in-out;
+
+    &::before {
+      position: absolute;
+      content: '';
+      bottom: 2px;
+      left: -1px;
+      display: block;
+      width: 0.5rem;
+      height: 1px;
+      background-color: rgb(0, 0, 0);
+      transform: rotate(-45deg);
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:hover,
+    &:focus {
+      border-bottom-color: rgb(238, 82, 129);
+
+      &:before {
+        background-color: rgb(238, 82, 129);
+      }
+    }
+  }
+
+  &__container {
+    width: 30vw;
+    height: auto;
+    padding: 1rem;
+    border: 2px solid rgb(238, 82, 129);
+    border-radius: 2rem;
+
+    &--loader {
+      height: 40vh;
+      border-color: transparent;
+    }
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+
+  &__item {
+    margin-bottom: 0.5rem;
+  }
+}

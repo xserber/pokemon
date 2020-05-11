@@ -1,0 +1,101 @@
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+  outline: none;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+}
+
+body {
+  position: relative;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'MuseoSansCyrl', sans-serif;
+  font-size: 14px;
+  background-color: hsl(360, 100%, 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  margin: 0;
+}
+
+input {
+  font-size: 1em;
+  outline: none;
+  border: none;
+}
+
+button {
+  padding: 0;
+  font-size: 1em;
+  background-color: transparent;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.application {
+  width: 65vw;
+  padding: 1rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.f-ai-center {
+  align-items: center;
+}
+
+.f-jc-center {
+  justify-content: center;
+}
+
+.f-js-sb {
+  justify-content: space-between;
+}
+
+.f-d-column {
+  flex-direction: column;
+}
+
+.m-auto {
+  margin: 0 auto;
+}
