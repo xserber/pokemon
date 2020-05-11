@@ -1,28 +1,47 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { Link, useParams } from "react-router-dom"
 
-import { getInformationPokemon } from '../../actions';
-import Loading from '../../components/Loader';
-import './style.scss';
+import { getInformationPokemon } from "../../actions"
+import Loading from "../../components/Loader"
+import "./style.scss"
 
-function Pokemon({ match }) {
-  const dispatch = useDispatch();
-  const pokemon = useSelector((state) => state.pokemon.current);
-  const loading = useSelector((state) => state.pokemon.loadingPokemon);
+function Pokemon() {
+  const dispatch = useDispatch()
+  const { name } = useParams()
+  const pokemon = useSelector(
+    (state: {
+      pokemon: {
+        current: {
+          name: string
+          // eslint-disable-next-line camelcase
+          stats: { stat: { name: string }; base_stat: string }[]
+          types: { type: { name: string } }[]
+          abilities: { ability: { name: string } }[]
+          // eslint-disable-next-line camelcase
+          sprites: { front_default: string }
+        }
+      }
+    }) => state.pokemon.current
+  )
+  const loading = useSelector(
+    (state: { pokemon: { loadingPokemon: boolean } }) =>
+      state.pokemon.loadingPokemon
+  )
 
   useEffect(() => {
-    dispatch(getInformationPokemon(match.params.name));
-  }, [dispatch]);
+    dispatch(getInformationPokemon(name))
+  }, [dispatch, name])
 
   return (
-    <div className="pokemon m-auto">
+    <main className="pokemon m-auto">
       <Link className="pokemon__back" to="/">
         Go back to main page
       </Link>
       <div
-        className={`pokemon__container flex ${loading ? 'pokemon__container--loader' : 'f-js-sb'}`}
+        className={`pokemon__container flex ${
+          loading ? "pokemon__container--loader" : "f-js-sb"
+        }`}
       >
         {loading && <Loading />}
         {!loading && (
@@ -63,7 +82,10 @@ function Pokemon({ match }) {
                   <ul className="pokemon__abilities">
                     {pokemon.abilities.map((el) => (
                       <li key={el.ability.name}>
-                        <Link className="pokemon__ability" to={`/skill/${el.ability.name}`}>
+                        <Link
+                          className="pokemon__ability"
+                          to={`/skill/${el.ability.name}`}
+                        >
                           {el.ability.name}
                         </Link>
                       </li>
@@ -82,24 +104,8 @@ function Pokemon({ match }) {
           </>
         )}
       </div>
-    </div>
-  );
+    </main>
+  )
 }
 
-Pokemon.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }),
-  }),
-};
-
-Pokemon.defaultProps = {
-  match: {
-    params: {
-      name: '',
-    },
-  },
-};
-
-export default Pokemon;
+export default Pokemon

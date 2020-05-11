@@ -1,12 +1,12 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React from "react"
+import { BrowserRouter, Switch, Route } from "react-router-dom"
 
-import Main from './pages/Main';
-import Pokemon from './pages/Pokemon';
-import Skill from './pages/Skill';
-import NotFound from './pages/NotFound';
+import Main from "./pages/Main"
+import Pokemon from "./pages/Pokemon"
+import Skill from "./pages/Skill"
+import NotFound from "./pages/NotFound"
 
-import ScrollToTop from './components/ScrollToTop';
+import ScrollToTop from "./components/ScrollToTop"
 
 const Router = () => (
   <BrowserRouter>
@@ -21,6 +21,6 @@ const Router = () => (
       </div>
     </ScrollToTop>
   </BrowserRouter>
-);
+)
 
-export default Router;
+export default Router
