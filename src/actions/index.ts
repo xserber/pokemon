@@ -8,10 +8,13 @@ import {
   CHANGE_LIST_POKEMON_LOADING,
   CHANGE_POKEMON_LOADING,
 } from "../constants"
+import IDataPokemons from "../types/pokemons"
+import IPokemon from "../types/pokemon"
+import IAbility from "../types/ability"
 
 const url = "https://pokeapi.co/api/v2/"
 
-function setDataPokemons(payload: object) {
+function setDataPokemons(payload: IDataPokemons[]) {
   return {
     type: GET_POKEMONS,
     payload,
@@ -37,7 +40,8 @@ export function getPokemons() {
   }
 }
 
-function setInformationPokemon(payload: object) {
+
+function setInformationPokemon(payload: IPokemon[]) {
   return {
     type: GET_INFORMATION_POKEMON,
     payload,
@@ -63,7 +67,7 @@ export function getInformationPokemon(name: string) {
   }
 }
 
-function setSkill(payload: object) {
+function setSkill(payload: IAbility[]) {
   return {
     type: GET_SKILL,
     payload,

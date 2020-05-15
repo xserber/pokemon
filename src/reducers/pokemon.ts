@@ -6,8 +6,18 @@ import {
   CHANGE_POKEMON_LOADING,
   CHANGE_LIST_POKEMON_LOADING,
 } from "../constants"
+import IDataPokemons from "../types/pokemons"
+import IPokemon from "../types/pokemon"
 
-const initialState = {
+interface IState {
+  list:           IDataPokemons[];
+  filterList:     IDataPokemons[];
+  current:       IPokemon | null;
+  loading:        boolean;
+  loadingPokemon: boolean;
+}
+
+const initialState: IState = {
   list: [],
   filterList: [],
   current: null,
@@ -16,12 +26,12 @@ const initialState = {
 }
 
 export default createReducer(initialState, {
-  [GET_POKEMONS]: (state: object, list: Array<object>) => ({
+  [GET_POKEMONS]: (state: IState, list: IDataPokemons[]) => ({
     ...state,
     list,
     filterList: list,
   }),
-  [GET_INFORMATION_POKEMON]: (state: object, current: object) => ({
+  [GET_INFORMATION_POKEMON]: (state: IState, current: IPokemon): IState => ({
     ...state,
     current,
   }),
@@ -33,13 +43,13 @@ export default createReducer(initialState, {
     list: [...state.filterList.filter((el) => el.name.includes(payload))],
   }),
   [CHANGE_POKEMON_LOADING]: (
-    state: object,
+    state: IState,
     loadingPokemon: boolean
-  ): object => ({
+  ): IState => ({
     ...state,
     loadingPokemon,
   }),
-  [CHANGE_LIST_POKEMON_LOADING]: (state: object, loading: boolean): object => ({
+  [CHANGE_LIST_POKEMON_LOADING]: (state: IState, loading: boolean): IState => ({
     ...state,
     loading,
   }),
